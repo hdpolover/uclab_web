@@ -10,9 +10,9 @@ class Template_Frontend
 
     function view($content, $data = NULL)
     {
-        $this->_ci->load->view('template/header', $data);
-        $this->_ci->load->view('template/navbar', $data);
+        $this->_ci->load->view('template/frontend/header', $data);
+        $this->_ci->load->view('template/frontend/navbar', $data);
         $this->_ci->load->view($content, $data);
-        $this->_ci->load->view('template/footer', $data);
+        $this->_ci->load->view('template/frontend/footer', $data);
     }
 }
