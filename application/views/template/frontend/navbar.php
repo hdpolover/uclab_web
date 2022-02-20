@@ -1,6 +1,6 @@
 <!-- Header
 		============================================= -->
-<header id="header" class="transparent-header floating-header">
+<header id="header" class="transparent-header floating-header <?= ($this->uri->segment(1) ? 'mt-4' : ''); ?>">
     <div id="header-wrap">
         <div class="container">
             <div class="header-row">
@@ -8,22 +8,27 @@
                 <!-- Logo
 						============================================= -->
                 <div id="logo">
-                    <a href="<?= base_url(); ?>" class="standard-logo" data-dark-logo="<?= base_url(); ?>assets/images/logo-dark.png"><img src="<?= base_url(); ?>assets/images/logo.png" alt="Canvas Logo"></a>
-                    <a href="<?= base_url(); ?>" class="retina-logo" data-dark-logo="<?= base_url(); ?>assets/images/logo-dark@2x.png"><img src="<?= base_url(); ?>assets/images/logo@2x.png" alt="Canvas Logo"></a>
+                    <a href="<?= base_url(); ?>" class="standard-logo" data-dark-logo="<?= base_url(); ?>berkas/<?= $logo2; ?>"><img src="<?= base_url(); ?>berkas/<?= $logo2; ?>" alt="<?= $web_title; ?>"></a>
+                    <a href="<?= base_url(); ?>" class="retina-logo" data-dark-logo="<?= base_url(); ?>berkas/background.png"><img src="<?= base_url(); ?>berkas/<?= $logo2; ?>" alt="<?= $web_title; ?>"></a>
                 </div><!-- #logo end -->
 
                 <div class="header-misc">
 
                     <!-- Top Search
 							============================================= -->
-                    <div id="top-search" class="header-misc-icon">
+                    <!-- <div id="top-search" class="header-misc-icon">
                         <a href="#" id="top-search-trigger"><i class="icon-line-search"></i><i class="icon-line-cross"></i></a>
-                    </div><!-- #top-search end -->
+                    </div> -->
+                    <!-- #top-search end -->
 
                     <!-- Top Cart
 							============================================= -->
                     <div id="top-cart" class="header-misc-icon d-none d-sm-block">
-                        <a href="<?= site_url('login'); ?>"><i class="icon-signin"></i></a>
+                        <?php if ($this->session->userdata('logged_in') == TRUE) : ?>
+                            <a href="<?= site_url('dashboard'); ?>"><i class="icon-user"></i></a>
+                        <?php else : ?>
+                            <a href="<?= site_url('login'); ?>"><i class="icon-signin"></i></a>
+                        <?php endif; ?>
                     </div><!-- #top-cart end -->
 
                 </div>

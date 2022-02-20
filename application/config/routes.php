@@ -50,9 +50,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+// login
+$route['login'] = 'authentication';
+$route['recovery-password'] = 'authentication/recovery_password';
+$route['reset-password'] = 'authentication/change_password';
+$route['logout'] = 'authentication/logout';
+
+// admin
+$route['dashboard'] = 'admin';
+$route['dashboard/information'] = 'admin/information';
+$route['dashboard/list-gallery'] = 'admin/list_gallery';
+$route['dashboard/add-new-gallery'] = 'admin/add_gallery';
+$route['dashboard/manage-collection'] = 'admin/manage_collection';
+$route['dashboard/list-foundation'] = 'admin/list_foundation';
+$route['dashboard/add-new-fundation'] = 'admin/new_foundation';
+
 // home
 $route['about'] = 'home/about';
 $route['gallery'] = 'home/gallery';
+$route['gallery/(:any)'] = 'home/gallery_detail/$1';
 $route['new-collection'] = 'home/new_collection';
 $route['foundation/(:any)'] = 'home/foundation/$1';
 $route['search'] = 'home/search';

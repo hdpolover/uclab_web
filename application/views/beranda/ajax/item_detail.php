@@ -1,7 +1,7 @@
                 <div class="single-product shop-quick-view-ajax">
 
                     <div class="ajax-modal-title">
-                        <h2>Pink Printed Dress</h2>
+                        <h2><?= $data['collection']['name']; ?></h2>
                     </div>
 
                     <div class="product modal-padding">
@@ -9,55 +9,39 @@
                         <div class="row gutter-40 col-mb-50">
                             <div class="col-md-6">
                                 <div class="product-image">
-                                    <div class="fslider" data-pagi="false">
-                                        <div class="flexslider">
-                                            <div class="slider-wrap">
-                                                <div class="slide"><a href="<?= base_url(); ?>assets/images/shop/dress/3.jpg" title="Pink Printed Dress - Front View"><img src="<?= base_url(); ?>assets/images/shop/dress/3.jpg" alt="Pink Printed Dress"></a></div>
-                                                <div class="slide"><a href="<?= base_url(); ?>assets/images/shop/dress/3-1.jpg" title="Pink Printed Dress - Side View"><img src="<?= base_url(); ?>assets/images/shop/dress/3-1.jpg" alt="Pink Printed Dress"></a></div>
-                                                <div class="slide"><a href="<?= base_url(); ?>assets/images/shop/dress/3-2.jpg" title="Pink Printed Dress - Back View"><img src="<?= base_url(); ?>assets/images/shop/dress/3-2.jpg" alt="Pink Printed Dress"></a></div>
-                                            </div>
-                                        </div>
+                                    <div class="slide">
+                                        <a href="<?= !empty($data['collection']['featured_image_url']) ? $data['collection']['featured_image_url'] : $data['collection']['image_url'] ?>" title="<?= $data['collection']['name']; ?>" class="photo-ajax">
+                                            <img src="<?= !empty($data['collection']['featured_image_url']) ? $data['collection']['featured_image_url'] : $data['collection']['image_url']; ?>" alt="<?= $data['collection']['name']; ?>">
+                                        </a>
                                     </div>
-                                    <div class="sale-flash badge badge-danger p-2">Sale!</div>
+                                    <div class="sale-flash badge badge-danger p-2"><?= $data['collection']['stats']['count']; ?> Items</div>
                                 </div>
                             </div>
-                            <div class="col-md-6 product-desc">
-                                <div class="product-price"><del>$39.99</del> <ins>$24.99</ins></div>
-                                <div class="product-rating">
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star3"></i>
-                                    <i class="icon-star-half-full"></i>
-                                    <i class="icon-star-empty"></i>
-                                </div>
-                                <div class="clear"></div>
-                                <div class="line"></div>
-
+                            <div class="col-md-6 product-desc pt-0">
                                 <!-- Product Single - Quantity & Cart Button
                                 ============================================= -->
-                                <form class="cart mb-0" method="post" enctype='multipart/form-data'>
-                                    <div class="quantity">
-                                        <input type="button" value="-" class="minus">
-                                        <input type="text" step="1" min="1" name="quantity" value="1" title="Qty" class="qty" size="4" />
-                                        <input type="button" value="+" class="plus">
-                                    </div>
-                                    <button type="submit" class="add-to-cart button m-0">Add to cart</button>
-                                </form><!-- Product Single - Quantity & Cart Button End -->
+                                <div class="cart mb-0 mt-0">
+                                    <a href="https://opensea.io/collection/<?= $data['collection']['slug']; ?>" target="_blank" class="btn bg-info btn-block text-center button m-0">Check on OpenSea</a>
+                                </div><!-- Product Single - Quantity & Cart Button End -->
 
                                 <div class="clear"></div>
                                 <div class="line"></div>
-                                <p>Libero velit id eaque ex quae laboriosam nulla optio doloribus! Perspiciatis, libero,
-                                    neque, perferendis at nisi optio dolor!</p>
+                                <p class="collection-box"><?= !empty($data['collection']['description'] && $data['collection']['description']) ? $data['collection']['description'] : 'Explore the ' . $data['collection']['name'] . ' collection'; ?></p>
                                 <ul class="iconlist">
-                                    <li><i class="icon-caret-right"></i> Dynamic Color Options</li>
-                                    <li><i class="icon-caret-right"></i> Lots of Size Options</li>
-                                    <li><i class="icon-caret-right"></i> 30-Day Return Policy</li>
+                                    <?php if (!empty($data['collection']['payment_tokens'])) : ?>
+                                        <?php foreach ($data['collection']['payment_tokens'] as $key) : ?>
+                                            <li class="mb-2"><i class="icon-caret-right"></i>
+                                                <img src="<?= $key['image_url']; ?>" alt="<?= $key['name']; ?>" width="20px" height="25px" class="mr-1">
+                                                <?= $key['eth_price']; ?> <span style="font: 15px;"><?= $key['name']; ?></span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
                                 </ul>
-                                <div class="card product-meta mb-0">
-                                    <div class="card-body">
-                                        <span itemprop="productID" class="sku_wrapper">SKU: <span class="sku">8465415</span></span>
-                                        <span class="posted_in">Category: <a href="#" rel="tag">Shoes</a>.</span>
-                                        <span class="tagged_as">Tags: <a href="#" rel="tag">Barena</a>, <a href="#" rel="tag">Blazers</a>, <a href="#" rel="tag">Tailoring</a>, <a href="#" rel="tag">Unconstructed</a>.</span>
+                                <div class="card product-meta mb-3">
+                                    <div class="card-body py-2">
+                                        <span class="posted_in">
+                                            <div class="product-price text-muted" style="font-size: 1.4rem;"><span style="font-size: 15px; margin-right: 10px">Floor Price</span><img src="https://storage.opensea.io/files/6f8e2979d428180222796ff4a33ab929.svg" width="20px" height="25px" style="margin-top:-3px" class="mr-1"><?= empty($data['collection']['stats']['floor_price']) ? '---' : $data['collection']['stats']['floor_price']; ?></div>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
