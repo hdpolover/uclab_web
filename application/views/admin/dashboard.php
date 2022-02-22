@@ -27,8 +27,8 @@
 
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Total catalog</div>
             <div class="card-body">
+                <h4 class="mb-2"><b>Total gallery</b></h4>
                 <h1 class="mb-1">120</h1>
             </div>
         </div>
@@ -36,8 +36,8 @@
 
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Statistik pengunjung</div>
             <div class="card-body">
+                <h4 class="mb-2"><b>Total foundation</b></h4>
                 <h1 class="mb-1">3000</h1>
             </div>
         </div>
